@@ -14,7 +14,7 @@ import com.sas_apps.cryptocoin.model.CoinMarketCapResponse;
 import java.util.List;
 
 
-public class MainRecyclerViewAdaptor extends RecyclerView.Adapter<MainRecyclerViewAdaptor.MainViewHolder>{
+public class MainRecyclerViewAdaptor extends RecyclerView.Adapter<MainRecyclerViewAdaptor.MainViewHolder> {
 
 
     private List<CoinMarketCapResponse> responseList;
@@ -26,15 +26,15 @@ public class MainRecyclerViewAdaptor extends RecyclerView.Adapter<MainRecyclerVi
     @NonNull
     @Override
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_item, parent, false);
         return new MainViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         holder.textName.setText(responseList.get(position).getName());
-        holder.textPriceINR.setText(String.format("₹ %s",responseList.get(position).getPriceInr()));
-        holder.textPriceUSD.setText(String.format("$ %s",responseList.get(position).getPriceUsd()));
+        holder.textPriceINR.setText(String.format("₹ %s", responseList.get(position).getPriceInr()));
+        holder.textPriceUSD.setText(String.format("$ %s", responseList.get(position).getPriceUsd()));
     }
 
     @Override
@@ -42,15 +42,15 @@ public class MainRecyclerViewAdaptor extends RecyclerView.Adapter<MainRecyclerVi
         return responseList.size();
     }
 
-    class MainViewHolder extends RecyclerView.ViewHolder{
+    class MainViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textName,textPriceINR,textPriceUSD;
+        TextView textName, textPriceINR, textPriceUSD;
 
         public MainViewHolder(View itemView) {
             super(itemView);
-            textName=itemView.findViewById(R.id.textView_coinName);
-            textPriceINR=itemView.findViewById(R.id.textView_valueINR);
-            textPriceUSD=itemView.findViewById(R.id.textView_valueUSD);
+            textName = itemView.findViewById(R.id.textView_coinName);
+            textPriceINR = itemView.findViewById(R.id.textView_valueINR);
+            textPriceUSD = itemView.findViewById(R.id.textView_valueUSD);
         }
     }
 }

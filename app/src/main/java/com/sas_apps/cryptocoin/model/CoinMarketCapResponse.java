@@ -197,29 +197,6 @@ public class CoinMarketCapResponse implements Parcelable {
 
 
     @Override
-    public String toString() {
-        return
-                "\n id='" + id + '\'' +
-                "\n name='" + name + '\'' +
-                "\n symbol='" + symbol + '\'' +
-                "\n rank='" + rank + '\'' +
-                "\n priceUsd='" + priceUsd + '\'' +
-                "\n priceBtc='" + priceBtc + '\'' +
-                "\n _24hVolumeUsd='" + _24hVolumeUsd + '\'' +
-                "\n marketCapUsd='" + marketCapUsd + '\'' +
-                "\n availableSupply='" + availableSupply + '\'' +
-                "\n totalSupply='" + totalSupply + '\'' +
-                "\n maxSupply='" + maxSupply + '\'' +
-                "\n percentChange1h='" + percentChange1h + '\'' +
-                "\n percentChange24h='" + percentChange24h + '\'' +
-                "\n percentChange7d='" + percentChange7d + '\'' +
-                "\n lastUpdated='" + lastUpdated + '\'' +
-                "\n priceInr='" + priceInr + '\'' +
-                "\n _24hVolumeInr='" + _24hVolumeInr + '\'' +
-                "\n marketCapInr='" + marketCapInr + '\'' ;
-    }
-
-    @Override
     public int describeContents() {
         return 0;
     }
@@ -244,5 +221,29 @@ public class CoinMarketCapResponse implements Parcelable {
         parcel.writeString(priceInr);
         parcel.writeString(_24hVolumeInr);
         parcel.writeString(marketCapInr);
+    }
+
+
+    @Override
+    public String toString() {
+        return
+                "\n id='" + id + '\'' +
+                        "\n name='" + name + '\'' +
+                        "\n symbol='" + symbol + '\'' +
+                        "\n rank='" + rank + '\'' +
+                        "\n priceUsd='" + priceUsd + '\'' +
+                        "\n priceBtc='" + priceBtc + '\'' +
+                        "\n _24hVolumeUsd='" + _24hVolumeUsd + '\'' +
+                        "\n marketCapUsd='" + marketCapUsd + '\'' +
+                        "\n availableSupply='" + availableSupply + '\'' +
+                        "\n totalSupply='" + totalSupply + '\'' +
+                        "\n maxSupply='" + maxSupply + '\'' +
+                        "\n percentChange1h='" + percentChange1h + '\'' +
+                        "\n percentChange24h='" + percentChange24h + '\'' +
+                        "\n percentChange7d='" + percentChange7d + '\'' +
+                        "\n lastUpdated='" + lastUpdated + '\'' +
+                        "\n priceInr='" + priceInr + '\'' +
+                        "\n _24hVolumeInr='" + _24hVolumeInr + '\'' +
+                        "\n marketCapInr='" + marketCapInr + '\'';
     }
 }

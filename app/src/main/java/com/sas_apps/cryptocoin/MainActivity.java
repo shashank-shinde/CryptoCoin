@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements
 
     private static final String TAG = "MainActivity";
     private static final String KEY = "Parcelable_Key";
-    private static final int API_RESPONSE_LIMIT=40;
-    private List<CoinMarketCapResponse> responseList=new ArrayList<>();
+    private static final int API_RESPONSE_LIMIT = 40;
+    private List<CoinMarketCapResponse> responseList = new ArrayList<>();
     private RecyclerView recyclerViewMain;
     private ProgressDialog progressDialog;
     Call<List<CoinMarketCapResponse>> apiCall;
@@ -43,33 +43,32 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerViewMain=findViewById(R.id.recyclerView_main);
-        progressDialog=new ProgressDialog(MainActivity.this);
+        recyclerViewMain = findViewById(R.id.recyclerView_main);
+        progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setMessage(getString(R.string.loading));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
-        RecyclerView.LayoutManager layoutManager=
-                new LinearLayoutManager(MainActivity.this,RecyclerView.VERTICAL,false);
+        RecyclerView.LayoutManager layoutManager =
+                new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false);
         recyclerViewMain.setLayoutManager(layoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(MainActivity.this,
                 DividerItemDecoration.VERTICAL);
         recyclerViewMain.addItemDecoration(dividerItemDecoration);
 
-        if (savedInstanceState!=null){
-            responseList= savedInstanceState.getParcelableArrayList(KEY);
+        if (savedInstanceState != null) {
+            responseList = savedInstanceState.getParcelableArrayList(KEY);
             recyclerViewMain.setAdapter(new MainRecyclerViewAdaptor(responseList));
-            progressDialog.cancel();
-        }else {
+        } else {
             makeApiCall();
         }
     }
 
 
     private void makeApiCall() {
-        CoinMarketCapApi api= RetrofitClient.getInstance(Utils.Base_URL)
+        CoinMarketCapApi api = RetrofitClient.getInstance(Utils.Base_URL)
                 .create(CoinMarketCapApi.class);
-        apiCall=api
-                .getCoinResponse("inr",API_RESPONSE_LIMIT);
+        apiCall = api
+                .getCoinResponse("inr", API_RESPONSE_LIMIT);
         apiCall.enqueue(this);
     }
 
@@ -78,11 +77,11 @@ public class MainActivity extends AppCompatActivity implements
     public void onResponse(@NonNull Call<List<CoinMarketCapResponse>> call,
                            @NonNull Response<List<CoinMarketCapResponse>> response) {
         progressDialog.cancel();
-        if (response.isSuccessful()){
+        if (response.isSuccessful()) {
 //         Log.d(TAG, String.format("onResponse: %s", response.body().get(i).toString()));
             responseList.addAll(response.body());
             recyclerViewMain.setAdapter(new MainRecyclerViewAdaptor(responseList));
-        }else {
+        } else {
             Toast.makeText(this, response.message(), Toast.LENGTH_SHORT).show();
         }
     }
@@ -91,17 +90,17 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onFailure(@NonNull Call<List<CoinMarketCapResponse>> call, @NonNull Throwable t) {
         progressDialog.cancel();
-        Log.e(TAG, String.format("onFailure: %s",t.getMessage()) );
-        if (t instanceof IOException){
+        Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
+        if (t instanceof IOException) {
             Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();
         }
     }
 
 
     @Override
-    protected void onSaveInstanceState (Bundle outState) {
+    protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (responseList!=null){
+        if (responseList != null) {
             outState.putParcelableArrayList(KEY, (ArrayList<? extends Parcelable>) responseList);
         }
     }
@@ -110,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (apiCall!=null && !apiCall.isExecuted()){
+        if (apiCall != null && !apiCall.isExecuted()) {
             apiCall.cancel();
         }
     }
