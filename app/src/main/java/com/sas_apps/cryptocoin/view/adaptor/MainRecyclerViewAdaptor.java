@@ -1,4 +1,4 @@
-package com.sas_apps.cryptocoin.adaptor;
+package com.sas_apps.cryptocoin.view.adaptor;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

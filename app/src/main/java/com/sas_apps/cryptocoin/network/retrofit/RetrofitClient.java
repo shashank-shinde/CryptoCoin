@@ -1,4 +1,4 @@
-package com.sas_apps.cryptocoin.retrofit;
+package com.sas_apps.cryptocoin.network.retrofit;
 /*
  * Created by Shashank Shinde.
  */

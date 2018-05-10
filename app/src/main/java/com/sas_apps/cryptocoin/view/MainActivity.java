@@ -1,4 +1,4 @@
-package com.sas_apps.cryptocoin;
+package com.sas_apps.cryptocoin.view;
 
 import android.app.ProgressDialog;
 import android.os.Parcelable;
@@ -11,10 +11,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.sas_apps.cryptocoin.adaptor.MainRecyclerViewAdaptor;
-import com.sas_apps.cryptocoin.api.CoinMarketCapApi;
+import com.sas_apps.cryptocoin.R;
+import com.sas_apps.cryptocoin.view.adaptor.MainRecyclerViewAdaptor;
+import com.sas_apps.cryptocoin.network.api.CoinMarketCapApi;
 import com.sas_apps.cryptocoin.model.CoinMarketCapResponse;
-import com.sas_apps.cryptocoin.retrofit.RetrofitClient;
+import com.sas_apps.cryptocoin.network.retrofit.RetrofitClient;
 import com.sas_apps.cryptocoin.utils.Utils;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.sas_apps.cryptocoin.api;
+package com.sas_apps.cryptocoin.network.api;
 
 import com.sas_apps.cryptocoin.model.CoinMarketCapResponse;
 
