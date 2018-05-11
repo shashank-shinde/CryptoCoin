@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements
     private RecyclerView recyclerViewMain;
     private ProgressDialog progressDialog;
     Call<List<CoinMarketCapResponse>> apiCall;
-    private RecyclerView recyclerView;
+//    private RecyclerView recyclerView;
 
 
     @Override
